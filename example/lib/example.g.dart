@@ -18,16 +18,16 @@ class Person(BaseModel) :
 class Order(BaseModel) :  
     date: datetime
 
-    ..count = count: int
-    ..itemNumber = itemNumber: int
-    ..isRushed = isRushed: bool
-    ..item = item: Any
-    ..prepTime = prepTime: Any
+    count: int
+    itemNumber: int
+    isRushed: bool
+    item: Any
+    prepTime: Any
 
 class Item(BaseModel) :  
-    ..count = count: int
-    ..itemNumber = itemNumber: int
-    ..isRushed = isRushed: bool
+    count: int
+    itemNumber: int
+    isRushed: bool
 
 // **************************************************************************
 // JsonLiteralGenerator

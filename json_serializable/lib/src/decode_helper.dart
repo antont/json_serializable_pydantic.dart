@@ -136,7 +136,7 @@ mixin DecodeHelper implements HelperCore {
       for (final field in data.fieldsToSet) {
         sectionBuffer
           ..writeln()
-          ..write('    ..$field = ')
+          ..write('    ') //$field = ')
           ..write(deserializeFun(field));
       }
       //sectionBuffer.writeln(';');
