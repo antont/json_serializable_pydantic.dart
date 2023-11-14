@@ -8,16 +8,13 @@ part of 'json_converter_example.dart';
 
 class DateTimeExample(BaseModel) :  
     when: datetime
-;
 
 class GenericCollection(<T>) :  
       page: page: int,
       totalResults: totalResults: int,
       totalPages: totalPages: int,
       results: results: list,
-;
 
 class CustomResult(BaseModel) :  
     name: str
     size: int
-;

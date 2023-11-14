@@ -139,7 +139,7 @@ mixin DecodeHelper implements HelperCore {
           ..write('    ..$field = ')
           ..write(deserializeFun(field));
       }
-      sectionBuffer.writeln(';');
+      //sectionBuffer.writeln(';');
       fromJsonLines.add(sectionBuffer.toString());
     }
 

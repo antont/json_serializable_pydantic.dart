@@ -14,7 +14,6 @@ class Person(BaseModel) :
       middleName: middleName: str,
       lastOrder: lastOrder: Any,
       orders: orders: list,
-;
 
 class Order(BaseModel) :  
     date: datetime
@@ -23,12 +22,12 @@ class Order(BaseModel) :
     ..itemNumber = itemNumber: int
     ..isRushed = isRushed: bool
     ..item = item: Any
-    ..prepTime = prepTime: Any;
+    ..prepTime = prepTime: Any
 
 class Item(BaseModel) :  
     ..count = count: int
     ..itemNumber = itemNumber: int
-    ..isRushed = isRushed: bool;
+    ..isRushed = isRushed: bool
 
 // **************************************************************************
 // JsonLiteralGenerator
