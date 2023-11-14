@@ -11,9 +11,9 @@ class Person(BaseModel):
     lastName: str
     dateOfBirth: datetime
 
-    middleName: Optional[str]
-    lastOrder: Optional[Any]
-    orders: Optional[list]
+    middleName: Optional[str] = None
+    lastOrder: Optional[Any] = None
+    orders: Optional[list] = None
 
 class Order(BaseModel):  
     date: datetime

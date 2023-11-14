@@ -359,7 +359,7 @@ _ConstructorData _writeConstructorInvocation(
             deserializeForField(paramElement.name, ctorParam: paramElement);
         final parts = value.split(':');
         final pytype = parts[1].trim();
-        return '    ${paramElement.name}: Optional[$pytype]\n';
+        return '    ${paramElement.name}: Optional[$pytype] = None\n';
       }));
   }
 
