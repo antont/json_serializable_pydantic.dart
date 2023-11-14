@@ -29,10 +29,11 @@ mixin DecodeHelper implements HelperCore {
     assert(config.createFactory);
     final buffer = StringBuffer();
 
-    final mapType = config.anyMap ? 'Map' : 'Map<String, dynamic>';
-    buffer.write('$targetClassReference '
-        '${prefix}FromJson${genericClassArgumentsImpl(withConstraints: true)}'
-        '($mapType json');
+    //final mapType = config.anyMap ? 'Map' : 'Map<String, dynamic>';
+    buffer.write('class $targetClassReference '
+        //'${prefix}FromJson${genericClassArgumentsImpl(withConstraints: true)}'
+        //'($mapType json'
+        );
 
     if (config.genericArgumentFactories) {
       for (var arg in element.typeParameters) {
@@ -47,7 +48,8 @@ mixin DecodeHelper implements HelperCore {
       }
     }
 
-    buffer.write(')');
+    //buffer.write(')');
+    buffer.write(':');
 
     final fromJsonLines = <String>[];
 
@@ -142,7 +144,7 @@ mixin DecodeHelper implements HelperCore {
 
     if (fromJsonLines.length == 1) {
       buffer
-        ..write('=>')
+        //..write('=>')
         ..write(fromJsonLines.single);
     } else {
       buffer
@@ -307,21 +309,21 @@ _ConstructorData _writeConstructorInvocation(
   final remainingFieldsForInvocationBody =
       writableFields.toSet().difference(usedCtorParamsAndFields);
 
-  final constructorExtra = constructorName.isEmpty ? '' : '.$constructorName';
+  //final constructorExtra = constructorName.isEmpty ? '' : '.$constructorName';
 
-  final buffer = StringBuffer()
-    ..write(
-      '$className'
-      '${genericClassArguments(classElement, false)}'
-      '$constructorExtra(',
-    );
+  final buffer = StringBuffer();
+    //..write(
+    //  'class $className'
+      //'${genericClassArguments(classElement, false)}'
+      //'$constructorExtra(',
+    //);
   if (constructorArguments.isNotEmpty) {
     buffer
       ..writeln()
       ..writeAll(constructorArguments.map((paramElement) {
-        final content =
-            deserializeForField(paramElement.name, ctorParam: paramElement);
-        return '      $content,\n';
+        final content = paramElement.name;
+            //deserializeForField(paramElement.name, ctorParam: paramElement);
+        return '    $content\n';
       }));
   }
   if (namedConstructorArguments.isNotEmpty) {
@@ -334,7 +336,7 @@ _ConstructorData _writeConstructorInvocation(
       }));
   }
 
-  buffer.write(')');
+//  buffer.write(')');
 
   usedCtorParamsAndFields.addAll(remainingFieldsForInvocationBody);
 

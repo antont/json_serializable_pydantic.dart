@@ -14,7 +14,7 @@ import 'type_helpers/enum_helper.dart';
 import 'type_helpers/generic_factory_helper.dart';
 import 'type_helpers/iterable_helper.dart';
 import 'type_helpers/json_converter_helper.dart';
-import 'type_helpers/json_helper.dart';
+import 'type_helpers/pydantic_helper.dart';
 import 'type_helpers/map_helper.dart';
 import 'type_helpers/record_helper.dart';
 import 'type_helpers/uri_helper.dart';
@@ -33,7 +33,7 @@ class Settings {
     BigIntHelper(),
     DateTimeHelper(),
     DurationHelper(),
-    JsonHelper(),
+    PydanticHelper(),
     UriHelper(),
   ];
 

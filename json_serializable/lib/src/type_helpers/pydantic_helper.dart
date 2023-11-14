@@ -18,9 +18,9 @@ import 'generic_factory_helper.dart';
 
 const _helperLambdaParam = 'value';
 
-/// Supports types that have `fromJson` constructors and/or `toJson` functions.
-class JsonHelper extends TypeHelper<TypeHelperContextWithConfig> {
-  const JsonHelper();
+/// For creating a Pydantic class
+class PydanticHelper extends TypeHelper<TypeHelperContextWithConfig> {
+  const PydanticHelper();
 
   /// Simply returns the [expression] provided.
   ///

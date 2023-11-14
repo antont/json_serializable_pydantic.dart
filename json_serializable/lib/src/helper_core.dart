@@ -28,7 +28,7 @@ abstract class HelperCore {
 
   @protected
   String get targetClassReference =>
-      '${element.name}${genericClassArgumentsImpl(withConstraints: false)}';
+      '${element.name}(${genericClassArgumentsImpl(withConstraints: false)})';
 
   @protected
   String nameAccess(FieldElement field) => jsonKeyFor(field).name;

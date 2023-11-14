@@ -13,7 +13,7 @@ export 'src/type_helpers/duration_helper.dart';
 export 'src/type_helpers/enum_helper.dart';
 export 'src/type_helpers/iterable_helper.dart';
 export 'src/type_helpers/json_converter_helper.dart';
-export 'src/type_helpers/json_helper.dart';
+export 'src/type_helpers/pydantic_helper.dart';
 export 'src/type_helpers/map_helper.dart' show MapHelper;
 export 'src/type_helpers/uri_helper.dart';
 export 'src/type_helpers/value_helper.dart';

@@ -128,6 +128,7 @@ class GeneratorHelper extends HelperCore with EncodeHelper, DecodeHelper {
         },
       );
 
+    /*
     if (config.createFieldMap) {
       yield createFieldMap(accessibleFieldSet);
     }
@@ -139,6 +140,7 @@ class GeneratorHelper extends HelperCore with EncodeHelper, DecodeHelper {
     if (config.createToJson) {
       yield* createToJson(accessibleFieldSet);
     }
+    */
 
     yield* _addedMembers;
   }

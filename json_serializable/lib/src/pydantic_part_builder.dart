@@ -32,8 +32,12 @@ Builder pydanticPartBuilder({
       const JsonLiteralGenerator(),
     ],
     'pydantic_serializable',
-    formatOutput: formatOutput,
+    formatOutput: pydanticFormatter,
   );
+}
+
+String pydanticFormatter(String code) {
+  return code;
 }
 
 /// Allows exposing separate [GeneratorForAnnotation] instances as one

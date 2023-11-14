@@ -13,7 +13,7 @@ import 'type_helper.dart';
 import 'type_helpers/big_int_helper.dart';
 import 'type_helpers/date_time_helper.dart';
 import 'type_helpers/duration_helper.dart';
-import 'type_helpers/json_helper.dart';
+import 'type_helpers/pydantic_helper.dart';
 import 'type_helpers/uri_helper.dart';
 
 class PydanticSerializableGenerator
