@@ -7,5 +7,5 @@ part of 'nested_values_example.dart';
 // **************************************************************************
 
 class NestedValueExample(BaseModel) :  
-    nestedValues
+    nestedValues: list
 ;

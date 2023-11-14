@@ -4,6 +4,7 @@
 
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/nullability_suffix.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:source_helper/source_helper.dart';
@@ -206,6 +207,11 @@ mixin DecodeHelper implements HelperCore {
     final defaultValue = jsonKey.defaultValue;
     final readValueFunc = jsonKey.readValueFunctionName;
 
+    final pythonType = dartToPython(targetType);
+
+    return '${field.name}: ${pythonType}';
+  }
+/*
     String deserialize(String expression) => contextHelper
         .deserialize(
           targetType,
@@ -248,6 +254,26 @@ mixin DecodeHelper implements HelperCore {
       }
     }
     return value;
+  }
+*/
+  String dartToPython(DartType dartType) {
+    if (dartType.isDartCoreString) {
+      return 'str';
+    } else if (dartType.isDartCoreInt) {
+      return 'int';
+    } else if (dartType.isDartCoreDouble) {
+      return 'float';
+    } else if (dartType.isDartCoreBool) {
+      return 'bool';
+    } else if (dartType.isDartCoreList) {
+      return 'list';
+    } else if (dartType.isDartCoreMap) {
+      return 'dict';
+    } else if (dartType.toString() == 'DateTime') {
+      return 'datetime';
+    } else {
+      return 'Any';
+    }
   }
 }
 
@@ -321,8 +347,7 @@ _ConstructorData _writeConstructorInvocation(
     buffer
       ..writeln()
       ..writeAll(constructorArguments.map((paramElement) {
-        final content = paramElement.name;
-            //deserializeForField(paramElement.name, ctorParam: paramElement);
+        final content = deserializeForField(paramElement.name, ctorParam: paramElement);            
         return '    $content\n';
       }));
   }

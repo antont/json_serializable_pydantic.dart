@@ -7,17 +7,17 @@ part of 'json_converter_example.dart';
 // **************************************************************************
 
 class DateTimeExample(BaseModel) :  
-    when
+    when: datetime
 ;
 
 class GenericCollection(<T>) :  
-      page: json['page'] as int?,
-      totalResults: json['total_results'] as int?,
-      totalPages: json['total_pages'] as int?,
-      results: (json['results'] as List<dynamic>?)?.map(_Converter<T>().fromJson).toList(),
+      page: page: int,
+      totalResults: totalResults: int,
+      totalPages: totalPages: int,
+      results: results: list,
 ;
 
 class CustomResult(BaseModel) :  
-    name
-    size
+    name: str
+    size: int
 ;

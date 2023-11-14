@@ -7,24 +7,24 @@ part of 'generic_response_class_example.dart';
 // **************************************************************************
 
 class BaseResponse(<T>) :  
-      status: json['status'] as int?,
-      msg: json['msg'] as String?,
-      data: BaseResponse._dataFromJson(json['data'] as Object),
+      status: status: int,
+      msg: msg: str,
+      data: data: Any,
 ;
 
 class Article(BaseModel) :  
-      id: json['id'] as int,
-      title: json['title'] as String,
-      author: json['author'] == null ? null : User.fromJson(json['author'] as Map<String, dynamic>),
-      comments: (json['comments'] as List<dynamic>?)?.map((e) => Comment.fromJson(e as Map<String, dynamic>)).toList(),
+      id: id: int,
+      title: title: str,
+      author: author: Any,
+      comments: comments: list,
 ;
 
 class User(BaseModel) :  
-      id: json['id'] as int?,
-      email: json['email'] as String?,
+      id: id: int,
+      email: email: str,
 ;
 
 class Comment(BaseModel) :  
-      id: json['id'] as int?,
-      content: json['content'] as String?,
+      id: id: int,
+      content: content: str,
 ;
