@@ -9,27 +9,27 @@ import 'dart:io';
 
 import 'package:build/build.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:json_serializable/builder.dart';
-import 'package:json_serializable/src/json_serializable_generator.dart';
+import 'package:pydantic_serializable/builder.dart';
+import 'package:pydantic_serializable/src/pydantic_serializable_generator.dart';
 import 'package:test/test.dart';
 import 'package:yaml/yaml.dart';
 
 import 'shared_config.dart';
 
 void main() {
-  test('fields in JsonSerializable are sorted', () {
+  test('fields in pydanticSerializable are sorted', () {
     expect(generatorConfigDefaultJson.keys,
         orderedEquals(generatorConfigDefaultJson.keys.toList()..sort()));
   });
 
   test('empty', () async {
-    final builder = jsonSerializable(BuilderOptions.empty);
+    final builder = pydanticSerializable(BuilderOptions.empty);
     expect(builder, isNotNull);
   });
 
   test('valid default config', () async {
     final builder =
-        jsonSerializable(BuilderOptions(generatorConfigDefaultJson));
+        pydanticSerializable(BuilderOptions(generatorConfigDefaultJson));
     expect(builder, isNotNull);
   });
 
@@ -44,7 +44,7 @@ void main() {
     }
 
     final builder =
-        jsonSerializable(BuilderOptions(generatorConfigNonDefaultJson));
+        pydanticSerializable(BuilderOptions(generatorConfigNonDefaultJson));
     expect(builder, isNotNull);
   });
 
@@ -52,7 +52,7 @@ void main() {
     final nullValueMap = Map.fromEntries(
         generatorConfigDefaultJson.entries.map((e) => MapEntry(e.key, null)));
     final config = JsonSerializable.fromJson(nullValueMap);
-    final generator = JsonSerializableGenerator(config: config);
+    final generator = PydanticSerializableGenerator(config: config);
     expect(generator.config.toJson(), generatorConfigDefaultJson);
   });
 
@@ -90,7 +90,7 @@ void main() {
       generatorConfigDefaultJson,
     );
 
-    final builder = jsonSerializable(BuilderOptions(configMap));
+    final builder = pydanticSerializable(BuilderOptions(configMap));
     expect(builder, isNotNull);
   });
 
@@ -104,7 +104,7 @@ void main() {
     );
 
     expect(
-        () => jsonSerializable(const BuilderOptions({'unsupported': 'config'})),
+        () => pydanticSerializable(const BuilderOptions({'unsupported': 'config'})),
         throwsA(matcher));
   });
 
@@ -140,7 +140,7 @@ There is a problem with "${entry.key}".
 $lastLine''',
         );
         expect(
-            () => jsonSerializable(BuilderOptions(config)), throwsA(matcher));
+            () => pydanticSerializable(BuilderOptions(config)), throwsA(matcher));
       });
     }
   });

@@ -22,7 +22,7 @@ dev_dependencies:
   dart_flutter_team_lints: ^2.0.0
 
   # REQUIRED!
-  json_serializable: ^6.6.0
+  pydantic_serializable: ^0.0.1
 
   # Not required to use `json_serializable`.
   path: ^1.8.0
@@ -33,5 +33,5 @@ dev_dependencies:
 dependency_overrides:
   json_annotation:
     path: ../json_annotation
-  json_serializable:
+  pydantic_serializable:
     path: ../json_serializable

@@ -1,17 +1,19 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// #GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'json_converter_example.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// PydanticSerializableGenerator
 // **************************************************************************
 
-DateTimeExample _$DateTimeExampleFromJson(Map<String, dynamic> json) =>
-    DateTimeExample(
+DateTimeExampleBaseModel _$DateTimeExampleFromJsonBaseModel(
+        Map<String, dynamic> json) =>
+    DateTimeExampleBaseModel(
       const _DateTimeEpochConverter().fromJson(json['when'] as int),
     );
 
-Map<String, dynamic> _$DateTimeExampleToJson(DateTimeExample instance) =>
+Map<String, dynamic> _$DateTimeExampleToJsonBaseModel(
+        DateTimeExampleBaseModel instance) =>
     <String, dynamic>{
       'when': const _DateTimeEpochConverter().toJson(instance.when),
     };
@@ -36,12 +38,15 @@ Map<String, dynamic> _$GenericCollectionToJson<T>(
       'results': instance.results?.map(_Converter<T>().toJson).toList(),
     };
 
-CustomResult _$CustomResultFromJson(Map<String, dynamic> json) => CustomResult(
+CustomResultBaseModel _$CustomResultFromJsonBaseModel(
+        Map<String, dynamic> json) =>
+    CustomResultBaseModel(
       json['name'] as String,
       json['size'] as int,
     );
 
-Map<String, dynamic> _$CustomResultToJson(CustomResult instance) =>
+Map<String, dynamic> _$CustomResultToJsonBaseModel(
+        CustomResultBaseModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'size': instance.size,

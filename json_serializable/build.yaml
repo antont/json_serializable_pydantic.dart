@@ -13,7 +13,7 @@ targets:
           # Need to update sourcegen_helper to generate List/Map with the right type params
           - inference_failure_on_collection_literal
 
-      json_serializable:
+      pydantic_serializable:
         generate_for:
         - example/*
         - test/default_value/*
@@ -25,22 +25,22 @@ targets:
         - test/supported_types/*
         - tool/readme/*
 
-      json_serializable|_field_matrix_builder:
+      pydantic_serializable|_field_matrix_builder:
         generate_for:
         - test/field_matrix_test.dart
 
-      json_serializable|_test_builder:
+      pydantic_serializable|_test_builder:
         generate_for:
         - test/default_value/default_value.dart
         - test/generic_files/generic_class.dart
         - test/integration/json_test_example.dart
         - test/kitchen_sink/kitchen_sink.dart
 
-      json_serializable|_type_builder:
+      pydantic_serializable|_type_builder:
         generate_for:
         - test/supported_types/input.dart
 
-      json_serializable|_type_test_builder:
+      pydantic_serializable|_type_test_builder:
         generate_for:
         - test/supported_types/type_test.dart
 
@@ -56,7 +56,7 @@ builders:
       - .g_exclude_null.dart
       - .g_explicit_to_json.dart
     build_to: source
-    runs_before: ["json_serializable"]
+    runs_before: ["pydantic_serializable"]
 
   _type_builder:
     import: 'tool/test_type_builder.dart'
@@ -80,7 +80,7 @@ builders:
       - .type_string.dart
       - .type_uri.dart
     build_to: source
-    runs_before: ["json_serializable"]
+    runs_before: ["pydantic_serializable"]
 
   _type_test_builder:
     import: 'tool/test_type_builder.dart'
@@ -103,7 +103,7 @@ builders:
       - .string_test.dart
       - .uri_test.dart
     build_to: source
-    runs_before: ["json_serializable"]
+    runs_before: ["pydantic_serializable"]
 
   _field_matrix_builder:
     import: 'tool/field_matrix_builder.dart'
@@ -111,7 +111,7 @@ builders:
     build_extensions:
       .dart: [.field_matrix.dart]
     build_to: source
-    runs_before: ["json_serializable"]
+    runs_before: ["pydantic_serializable"]
 
   _readme_builder:
     import: "tool/readme_builder.dart"
@@ -121,10 +121,10 @@ builders:
     auto_apply: root_package
     required_inputs: ['.dart']
 
-  json_serializable:
-    import: "package:json_serializable/builder.dart"
-    builder_factories: ["jsonSerializable"]
-    build_extensions: {".dart": ["json_serializable.g.part"]}
+  pydantic_serializable:
+    import: "package:pydantic_serializable/builder.dart"
+    builder_factories: ["pydanticSerializable"]
+    build_extensions: {".dart": ["pydantic_serializable.g.part"]}
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen|combining_builder"]

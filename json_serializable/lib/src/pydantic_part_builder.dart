@@ -9,7 +9,7 @@ import 'package:source_gen/source_gen.dart';
 import 'check_dependencies.dart';
 import 'json_enum_generator.dart';
 import 'json_literal_generator.dart';
-import 'json_serializable_generator.dart';
+import 'pydantic_serializable_generator.dart';
 import 'settings.dart';
 
 /// Returns a [Builder] for use within a `package:build_runner`
@@ -17,7 +17,7 @@ import 'settings.dart';
 ///
 /// [formatOutput] is called to format the generated code. If not provided,
 /// the default Dart code formatter is used.
-Builder jsonPartBuilder({
+Builder pydanticPartBuilder({
   String Function(String code)? formatOutput,
   JsonSerializable? config,
 }) {
@@ -26,12 +26,12 @@ Builder jsonPartBuilder({
   return SharedPartBuilder(
     [
       _UnifiedGenerator([
-        JsonSerializableGenerator.fromSettings(settings),
+        PydanticSerializableGenerator.fromSettings(settings),
         const JsonEnumGenerator(),
       ]),
       const JsonLiteralGenerator(),
     ],
-    'json_serializable',
+    'pydantic_serializable',
     formatOutput: formatOutput,
   );
 }
@@ -72,7 +72,7 @@ class _UnifiedGenerator extends Generator {
   }
 
   @override
-  String toString() => 'JsonSerializableGenerator';
+  String toString() => 'PydanticSerializableGenerator';
 }
 
 // Borrowed from `package:source_gen`

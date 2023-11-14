@@ -16,39 +16,39 @@ import 'type_helpers/duration_helper.dart';
 import 'type_helpers/json_helper.dart';
 import 'type_helpers/uri_helper.dart';
 
-class JsonSerializableGenerator
+class PydanticSerializableGenerator
     extends GeneratorForAnnotation<JsonSerializable> {
   final Settings _settings;
 
   JsonSerializable get config => _settings.config.toJsonSerializable();
 
-  JsonSerializableGenerator.fromSettings(this._settings);
+  PydanticSerializableGenerator.fromSettings(this._settings);
 
-  /// Creates an instance of [JsonSerializableGenerator].
+  /// Creates an instance of [PydanticSerializableGenerator].
   ///
   /// If [typeHelpers] is not provided, the built-in helpers are used:
   /// [BigIntHelper], [DateTimeHelper], [DurationHelper], [JsonHelper], and
   /// [UriHelper].
-  factory JsonSerializableGenerator({
+  factory PydanticSerializableGenerator({
     JsonSerializable? config,
     List<TypeHelper>? typeHelpers,
   }) =>
-      JsonSerializableGenerator.fromSettings(Settings(
+      PydanticSerializableGenerator.fromSettings(Settings(
         config: config,
         typeHelpers: typeHelpers,
       ));
 
-  /// Creates an instance of [JsonSerializableGenerator].
+  /// Creates an instance of [PydanticSerializableGenerator].
   ///
   /// [typeHelpers] provides a set of [TypeHelper] that will be used along with
   /// the built-in helpers:
   /// [BigIntHelper], [DateTimeHelper], [DurationHelper], [JsonHelper], and
   /// [UriHelper].
-  factory JsonSerializableGenerator.withDefaultHelpers(
+  factory PydanticSerializableGenerator.withDefaultHelpers(
     Iterable<TypeHelper> typeHelpers, {
     JsonSerializable? config,
   }) =>
-      JsonSerializableGenerator(
+      PydanticSerializableGenerator(
         config: config,
         typeHelpers: List.unmodifiable(
           typeHelpers.followedBy(Settings.defaultHelpers),

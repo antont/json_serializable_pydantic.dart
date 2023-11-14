@@ -1,12 +1,13 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// #GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'example.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// PydanticSerializableGenerator
 // **************************************************************************
 
-Person _$PersonFromJson(Map<String, dynamic> json) => Person(
+PersonBaseModel _$PersonFromJsonBaseModel(Map<String, dynamic> json) =>
+    PersonBaseModel(
       json['firstName'] as String,
       json['lastName'] as String,
       DateTime.parse(json['date-of-birth'] as String),
@@ -19,7 +20,7 @@ Person _$PersonFromJson(Map<String, dynamic> json) => Person(
           .toList(),
     );
 
-Map<String, dynamic> _$PersonToJson(Person instance) {
+Map<String, dynamic> _$PersonToJsonBaseModel(PersonBaseModel instance) {
   final val = <String, dynamic>{
     'firstName': instance.firstName,
   };
@@ -38,7 +39,8 @@ Map<String, dynamic> _$PersonToJson(Person instance) {
   return val;
 }
 
-Order _$OrderFromJson(Map<String, dynamic> json) => Order(
+OrderBaseModel _$OrderFromJsonBaseModel(Map<String, dynamic> json) =>
+    OrderBaseModel(
       Order._dateTimeFromEpochUs(json['date'] as int),
     )
       ..count = json['count'] as int?
@@ -49,7 +51,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
           : Item.fromJson(json['item'] as Map<String, dynamic>)
       ..prepTime = Order._durationFromMilliseconds(json['prep-time'] as int?);
 
-Map<String, dynamic> _$OrderToJson(Order instance) {
+Map<String, dynamic> _$OrderToJsonBaseModel(OrderBaseModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -67,12 +69,14 @@ Map<String, dynamic> _$OrderToJson(Order instance) {
   return val;
 }
 
-Item _$ItemFromJson(Map<String, dynamic> json) => Item()
-  ..count = json['count'] as int?
-  ..itemNumber = json['itemNumber'] as int?
-  ..isRushed = json['isRushed'] as bool?;
+ItemBaseModel _$ItemFromJsonBaseModel(Map<String, dynamic> json) =>
+    ItemBaseModel()
+      ..count = json['count'] as int?
+      ..itemNumber = json['itemNumber'] as int?
+      ..isRushed = json['isRushed'] as bool?;
 
-Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
+Map<String, dynamic> _$ItemToJsonBaseModel(ItemBaseModel instance) =>
+    <String, dynamic>{
       'count': instance.count,
       'itemNumber': instance.itemNumber,
       'isRushed': instance.isRushed,

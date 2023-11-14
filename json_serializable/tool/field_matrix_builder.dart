@@ -79,6 +79,7 @@ const fromJsonFactories = <Object Function(Map<String, dynamic>)>{
 ''');
 
     await buildStep.writeAsString(output, formatter.format(content.toString()));
+    //await buildStep.writeAsString(output, content.toString());
   }
 
   @override

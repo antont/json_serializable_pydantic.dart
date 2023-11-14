@@ -4,4 +4,4 @@
 
 export 'src/json_enum_generator.dart' show JsonEnumGenerator;
 export 'src/json_literal_generator.dart' show JsonLiteralGenerator;
-export 'src/json_serializable_generator.dart' show JsonSerializableGenerator;
+export 'src/pydantic_serializable_generator.dart' show PydanticSerializableGenerator;

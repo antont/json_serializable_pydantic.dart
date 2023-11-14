@@ -5,7 +5,7 @@
 @TestOn('vm')
 library test;
 
-import 'package:json_serializable/json_serializable.dart';
+import 'package:pydantic_serializable/pydantic_serializable.dart';
 import 'package:path/path.dart' as p;
 import 'package:source_gen_test/source_gen_test.dart';
 import 'package:test/test.dart';
@@ -19,7 +19,7 @@ Future<void> main() async {
 
   testAnnotatedElements(
     jsonSerializableTestReader,
-    JsonSerializableGenerator(),
+    PydanticSerializableGenerator(),
     expectedAnnotatedTests: _expectedAnnotatedTests,
   );
 

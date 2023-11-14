@@ -117,7 +117,7 @@ $converterOrKeyInstructions''';
 /// ```
 String genericClassArguments(ClassElement element, bool? withConstraints) {
   if (withConstraints == null || element.typeParameters.isEmpty) {
-    return '';
+    return 'BaseModel';
   }
   final values = element.typeParameters.map((t) {
     if (withConstraints && t.bound != null) {

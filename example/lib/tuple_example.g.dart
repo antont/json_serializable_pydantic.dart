@@ -1,9 +1,9 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// #GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'tuple_example.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// PydanticSerializableGenerator
 // **************************************************************************
 
 Tuple<T, S> _$TupleFromJson<T, S>(
@@ -26,8 +26,9 @@ Map<String, dynamic> _$TupleToJson<T, S>(
       'value2': toJsonS(instance.value2),
     };
 
-ConcreteClass _$ConcreteClassFromJson(Map<String, dynamic> json) =>
-    ConcreteClass(
+ConcreteClassBaseModel _$ConcreteClassFromJsonBaseModel(
+        Map<String, dynamic> json) =>
+    ConcreteClassBaseModel(
       Tuple<int, DateTime>.fromJson(json['tuple1'] as Map<String, dynamic>,
           (value) => value as int, (value) => DateTime.parse(value as String)),
       Tuple<Duration, BigInt>.fromJson(
@@ -36,7 +37,8 @@ ConcreteClass _$ConcreteClassFromJson(Map<String, dynamic> json) =>
           (value) => BigInt.parse(value as String)),
     );
 
-Map<String, dynamic> _$ConcreteClassToJson(ConcreteClass instance) =>
+Map<String, dynamic> _$ConcreteClassToJsonBaseModel(
+        ConcreteClassBaseModel instance) =>
     <String, dynamic>{
       'tuple1': instance.tuple1.toJson(
         (value) => value,

@@ -10,10 +10,10 @@ import 'dart:async';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:build/experiments.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:json_serializable/json_serializable.dart';
-import 'package:json_serializable/src/constants.dart';
-import 'package:json_serializable/src/type_helper.dart';
-import 'package:json_serializable/src/type_helpers/config_types.dart';
+import 'package:pydantic_serializable/pydantic_serializable.dart';
+import 'package:pydantic_serializable/src/constants.dart';
+import 'package:pydantic_serializable/src/type_helper.dart';
+import 'package:pydantic_serializable/src/type_helpers/config_types.dart';
 import 'package:path/path.dart' as p;
 import 'package:source_gen/source_gen.dart';
 import 'package:source_gen_test/source_gen_test.dart';
@@ -41,7 +41,7 @@ Future<void> main() async {
     Future<void> runWithConfigAndLogger(
         JsonSerializable? config, String className) async {
       await generateForElement(
-          JsonSerializableGenerator(
+          PydanticSerializableGenerator(
               config: config, typeHelpers: const [_ConfigLogger()]),
           _libraryReader,
           className);
@@ -127,7 +127,7 @@ Future<void> main() async {
 }
 
 Future<String> _runForElementNamed(JsonSerializable config, String name) async {
-  final generator = JsonSerializableGenerator(config: config);
+  final generator = PydanticSerializableGenerator(config: config);
   return generateForElement(generator, _libraryReader, name);
 }
 

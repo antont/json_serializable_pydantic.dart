@@ -1,9 +1,9 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// #GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'generic_response_class_example.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// PydanticSerializableGenerator
 // **************************************************************************
 
 BaseResponse<T> _$BaseResponseFromJson<T>(Map<String, dynamic> json) =>
@@ -13,7 +13,8 @@ BaseResponse<T> _$BaseResponseFromJson<T>(Map<String, dynamic> json) =>
       data: BaseResponse._dataFromJson(json['data'] as Object),
     );
 
-Article _$ArticleFromJson(Map<String, dynamic> json) => Article(
+ArticleBaseModel _$ArticleFromJsonBaseModel(Map<String, dynamic> json) =>
+    ArticleBaseModel(
       id: json['id'] as int,
       title: json['title'] as String,
       author: json['author'] == null
@@ -24,12 +25,14 @@ Article _$ArticleFromJson(Map<String, dynamic> json) => Article(
           .toList(),
     );
 
-User _$UserFromJson(Map<String, dynamic> json) => User(
+UserBaseModel _$UserFromJsonBaseModel(Map<String, dynamic> json) =>
+    UserBaseModel(
       id: json['id'] as int?,
       email: json['email'] as String?,
     );
 
-Comment _$CommentFromJson(Map<String, dynamic> json) => Comment(
+CommentBaseModel _$CommentFromJsonBaseModel(Map<String, dynamic> json) =>
+    CommentBaseModel(
       id: json['id'] as int?,
       content: json['content'] as String?,
     );
