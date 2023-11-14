@@ -6,16 +6,16 @@ part of 'example.dart';
 // PydanticSerializableGenerator
 // **************************************************************************
 
-class Person(BaseModel) :  
+class Person(BaseModel):  
     firstName: str
     lastName: str
     dateOfBirth: datetime
 
-      middleName: middleName: str,
-      lastOrder: lastOrder: Any,
-      orders: orders: list,
+    middleName: Optional[str]
+    lastOrder: Optional[Any]
+    orders: Optional[list]
 
-class Order(BaseModel) :  
+class Order(BaseModel):  
     date: datetime
 
     count: int
@@ -24,7 +24,7 @@ class Order(BaseModel) :
     item: Any
     prepTime: Any
 
-class Item(BaseModel) :  
+class Item(BaseModel):  
     count: int
     itemNumber: int
     isRushed: bool

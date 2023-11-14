@@ -6,5 +6,5 @@ part of 'nested_values_example.dart';
 // PydanticSerializableGenerator
 // **************************************************************************
 
-class NestedValueExample(BaseModel) :  
+class NestedValueExample(BaseModel):  
     nestedValues: list

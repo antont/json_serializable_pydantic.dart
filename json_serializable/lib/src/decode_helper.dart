@@ -31,7 +31,7 @@ mixin DecodeHelper implements HelperCore {
     final buffer = StringBuffer();
 
     //final mapType = config.anyMap ? 'Map' : 'Map<String, dynamic>';
-    buffer.write('class $targetClassReference '
+    buffer.write('class $targetClassReference'
         //'${prefix}FromJson${genericClassArgumentsImpl(withConstraints: true)}'
         //'($mapType json'
         );
@@ -351,13 +351,15 @@ _ConstructorData _writeConstructorInvocation(
         return '    $content\n';
       }));
   }
-  if (namedConstructorArguments.isNotEmpty) {
+  if (namedConstructorArguments.isNotEmpty) { //somehow these seem to be the optional ones(?)
     buffer
       ..writeln()
       ..writeAll(namedConstructorArguments.map((paramElement) {
         final value =
             deserializeForField(paramElement.name, ctorParam: paramElement);
-        return '      ${paramElement.name}: $value,\n';
+        final parts = value.split(':');
+        final pytype = parts[1].trim();
+        return '    ${paramElement.name}: Optional[$pytype]\n';
       }));
   }
 

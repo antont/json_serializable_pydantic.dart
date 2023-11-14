@@ -6,15 +6,15 @@ part of 'json_converter_example.dart';
 // PydanticSerializableGenerator
 // **************************************************************************
 
-class DateTimeExample(BaseModel) :  
+class DateTimeExample(BaseModel):  
     when: datetime
 
-class GenericCollection(<T>) :  
-      page: page: int,
-      totalResults: totalResults: int,
-      totalPages: totalPages: int,
-      results: results: list,
+class GenericCollection(<T>):  
+    page: Optional[int]
+    totalResults: Optional[int]
+    totalPages: Optional[int]
+    results: Optional[list]
 
-class CustomResult(BaseModel) :  
+class CustomResult(BaseModel):  
     name: str
     size: int

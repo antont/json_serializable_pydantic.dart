@@ -6,21 +6,21 @@ part of 'generic_response_class_example.dart';
 // PydanticSerializableGenerator
 // **************************************************************************
 
-class BaseResponse(<T>) :  
-      status: status: int,
-      msg: msg: str,
-      data: data: Any,
+class BaseResponse(<T>):  
+    status: Optional[int]
+    msg: Optional[str]
+    data: Optional[Any]
 
-class Article(BaseModel) :  
-      id: id: int,
-      title: title: str,
-      author: author: Any,
-      comments: comments: list,
+class Article(BaseModel):  
+    id: Optional[int]
+    title: Optional[str]
+    author: Optional[Any]
+    comments: Optional[list]
 
-class User(BaseModel) :  
-      id: id: int,
-      email: email: str,
+class User(BaseModel):  
+    id: Optional[int]
+    email: Optional[str]
 
-class Comment(BaseModel) :  
-      id: id: int,
-      content: content: str,
+class Comment(BaseModel):  
+    id: Optional[int]
+    content: Optional[str]

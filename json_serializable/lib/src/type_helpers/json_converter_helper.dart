@@ -320,7 +320,7 @@ _ConverterMatch? _compatibleMatch(
       annotation,
       constantValue,
       jsonConverterSuper.typeArguments[1],
-      '${targetType.element.name}${targetType.isNullableType ? '?' : ''}',
+      'XXX${targetType.element.name}${targetType.isNullableType ? '?' : ''}',
       fieldType,
     );
   }
