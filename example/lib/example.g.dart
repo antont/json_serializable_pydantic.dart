@@ -10,21 +10,21 @@ class Person(BaseModel):
     firstName: str
     lastName: str
     dateOfBirth: datetime
-    middleName: Optional[str]
-    lastOrder: Optional[DateTime]
-    orders: Optional[list[Order]]
+    middleName: Optional[str] = None
+    lastOrder: Optional[DateTime] = None
+    orders: Optional[list[Order]] = None
 
 class Order(BaseModel):  
     date: datetime
 
-    count: Optional[int]
-    itemNumber: Optional[int]
-    isRushed: Optional[bool]
-    item: Optional[Item]
-    prepTime: Optional[Duration]
+    count: Optional[int] = None
+    itemNumber: Optional[int] = None
+    isRushed: Optional[bool] = None
+    item: Optional[Item] = None
+    prepTime: Optional[Duration] = None
 
 class Item(BaseModel):  
 
-    count: Optional[int]
-    itemNumber: Optional[int]
-    isRushed: Optional[bool]
+    count: Optional[int] = None
+    itemNumber: Optional[int] = None
+    isRushed: Optional[bool] = None

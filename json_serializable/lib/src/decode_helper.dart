@@ -296,7 +296,7 @@ mixin DecodeHelper implements HelperCore {
     size: num
     */
     if (optional) {
-      pyType = 'Optional[$pyType]';
+      pyType = 'Optional[$pyType] = None';
     }
     return pyType;
   }
@@ -410,7 +410,7 @@ _ConstructorData _writeConstructorInvocation(
         final pytype = parts[1].trim();
         late String typedef = pytype;
         if (paramElement.isOptional && !pytype.contains('Optional')) {
-          typedef = 'Optional[$pytype]';
+          typedef = 'Optional[$pytype] = None';
         }
 
         return '    ${paramElement.name}: $typedef\n';
