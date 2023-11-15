@@ -29,7 +29,7 @@ Builder pydanticPartBuilder({
         PydanticSerializableGenerator.fromSettings(settings),
         const JsonEnumGenerator(),
       ]),
-      const JsonLiteralGenerator(),
+      //const JsonLiteralGenerator(),
     ],
     'pydantic_serializable',
     formatOutput: pydanticFormatter,
