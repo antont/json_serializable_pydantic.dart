@@ -257,6 +257,12 @@ mixin DecodeHelper implements HelperCore {
   }
 */
   String dartToPython(DartType dartType) {
+    var typeString = dartType.toString();
+    var optional = false;
+    if (typeString.endsWith('?')) {
+      optional = true;
+      typeString = typeString.substring(0, typeString.length-1);
+    }
     late String pyType;
     if (dartType.isDartCoreString) {
       pyType = 'str';
@@ -270,10 +276,10 @@ mixin DecodeHelper implements HelperCore {
       pyType = 'list';
     } else if (dartType.isDartCoreMap) {
       pyType = 'dict';
-    } else if (dartType.toString() == 'DateTime') {
+    } else if (typeString == 'DateTime') {
       pyType = 'datetime';
     } else {
-      pyType = dartType.toString(); //'Any';
+      pyType = typeString; //'Any';
     }
     /* TODO:
     item: Item?
@@ -282,8 +288,7 @@ mixin DecodeHelper implements HelperCore {
     data: Optional[T?]
     lastOrder: Optional[DateTime?]
     */
-    if (dartType.toString().endsWith('?')) {
-      pyType = pyType.substring(0, pyType.length);
+    if (optional) {
       pyType = 'Optional[$pyType]';
     }
     return pyType;

@@ -11,7 +11,7 @@ class Person(BaseModel):
     lastName: str
     dateOfBirth: datetime
     middleName: Optional[str]
-    lastOrder: Optional[DateTime?]
+    lastOrder: Optional[datetime]
     orders: Optional[list]
 
 class Order(BaseModel):  
@@ -20,8 +20,8 @@ class Order(BaseModel):
     count: Optional[int]
     itemNumber: Optional[int]
     isRushed: Optional[bool]
-    item: Optional[Item?]
-    prepTime: Optional[Duration?]
+    item: Optional[Item]
+    prepTime: Optional[Duration]
 
 class Item(BaseModel):  
 
