@@ -308,6 +308,8 @@ mixin DecodeHelper implements HelperCore {
       return 'int';
     } else if (dartType.isDartCoreDouble) {
       return 'float';
+    } else if (dartType.isDartCoreNum) {
+      return 'float';
     } else if (dartType.isDartCoreBool) {
       return 'bool';
     } else if (dartType.toString() == 'DateTime') {
