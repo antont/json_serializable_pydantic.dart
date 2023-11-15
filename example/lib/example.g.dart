@@ -17,14 +17,14 @@ class Person(BaseModel):
 class Order(BaseModel):  
     date: datetime
 
-    count: int
-    itemNumber: int
-    isRushed: bool
-    item: Item?
-    prepTime: Duration?
+    count: Optional[int]
+    itemNumber: Optional[int]
+    isRushed: Optional[bool]
+    item: Optional[Item?]
+    prepTime: Optional[Duration?]
 
 class Item(BaseModel):  
 
-    count: int
-    itemNumber: int
-    isRushed: bool
+    count: Optional[int]
+    itemNumber: Optional[int]
+    isRushed: Optional[bool]

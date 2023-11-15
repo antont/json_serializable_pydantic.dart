@@ -257,23 +257,36 @@ mixin DecodeHelper implements HelperCore {
   }
 */
   String dartToPython(DartType dartType) {
+    late String pyType;
     if (dartType.isDartCoreString) {
-      return 'str';
+      pyType = 'str';
     } else if (dartType.isDartCoreInt) {
-      return 'int';
+      pyType = 'int';
     } else if (dartType.isDartCoreDouble) {
-      return 'float';
+      pyType = 'float';
     } else if (dartType.isDartCoreBool) {
-      return 'bool';
+      pyType = 'bool';
     } else if (dartType.isDartCoreList) {
-      return 'list';
+      pyType = 'list';
     } else if (dartType.isDartCoreMap) {
-      return 'dict';
+      pyType = 'dict';
     } else if (dartType.toString() == 'DateTime') {
-      return 'datetime';
+      pyType = 'datetime';
     } else {
-      return dartType.toString(); //'Any';
+      pyType = dartType.toString(); //'Any';
     }
+    /* TODO:
+    item: Item?
+    tuple1: Tuple<int, DateTime>
+    author: Optional[User?]
+    data: Optional[T?]
+    lastOrder: Optional[DateTime?]
+    */
+    if (dartType.toString().endsWith('?')) {
+      pyType = pyType.substring(0, pyType.length);
+      pyType = 'Optional[$pyType]';
+    }
+    return pyType;
   }
 }
 
@@ -360,11 +373,9 @@ _ConstructorData _writeConstructorInvocation(
             deserializeForField(paramElement.name, ctorParam: paramElement);
         final parts = value.split(':');
         final pytype = parts[1].trim();
-        late String typedef;
-        if (paramElement.isOptional) {
+        late String typedef = pytype;
+        if (paramElement.isOptional && !pytype.contains('Optional')) {
           typedef = 'Optional[$pytype]';
-        } else {
-          typedef = pytype;
         }
 
         return '    ${paramElement.name}: $typedef\n';
