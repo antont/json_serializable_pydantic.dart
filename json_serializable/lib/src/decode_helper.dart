@@ -350,16 +350,24 @@ _ConstructorData _writeConstructorInvocation(
         final content = deserializeForField(paramElement.name, ctorParam: paramElement);            
         return '    $content\n';
       }));
+  } else {
+    buffer.writeln();
   }
   if (namedConstructorArguments.isNotEmpty) { //somehow these seem to be the optional ones(?)
     buffer
-      ..writeln()
-      ..writeAll(namedConstructorArguments.map((paramElement) {
+      .writeAll(namedConstructorArguments.map((paramElement) {
         final value =
             deserializeForField(paramElement.name, ctorParam: paramElement);
         final parts = value.split(':');
         final pytype = parts[1].trim();
-        return '    ${paramElement.name}: $pytype\n';
+        late String typedef;
+        if (paramElement.isOptional) {
+          typedef = 'Optional[$pytype]';
+        } else {
+          typedef = pytype;
+        }
+
+        return '    ${paramElement.name}: $typedef\n';
       }));
   }
 

@@ -10,10 +10,10 @@ class DateTimeExample(BaseModel):
     when: datetime
 
 class GenericCollection(<T>):  
-    page: int
-    totalResults: int
-    totalPages: int
-    results: list
+    page: Optional[int]
+    totalResults: Optional[int]
+    totalPages: Optional[int]
+    results: Optional[list]
 
 class CustomResult(BaseModel):  
     name: str

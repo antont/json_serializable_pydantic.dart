@@ -7,20 +7,20 @@ part of 'generic_response_class_example.dart';
 // **************************************************************************
 
 class BaseResponse(<T>):  
-    status: int
-    msg: str
-    data: Any
+    status: Optional[int]
+    msg: Optional[str]
+    data: Optional[Any]
 
 class Article(BaseModel):  
     id: int
     title: str
-    author: Any
-    comments: list
+    author: Optional[Any]
+    comments: Optional[list]
 
 class User(BaseModel):  
-    id: int
-    email: str
+    id: Optional[int]
+    email: Optional[str]
 
 class Comment(BaseModel):  
-    id: int
-    content: str
+    id: Optional[int]
+    content: Optional[str]
