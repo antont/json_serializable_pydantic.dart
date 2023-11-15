@@ -268,14 +268,14 @@ mixin DecodeHelper implements HelperCore {
     if (dartType.isDartCoreList) {
       final container = 'list';
       final args = dartType.typeArgumentsOf(coreIterableTypeChecker);
-      if (args!.isNotEmpty) {
+      if (args != null && args.isNotEmpty) {
         final argType = dartToPythonSingletype(args[0]);
         pyType = '$container[$argType]';
       }
     } else if (dartType.isDartCoreMap) {
       final container = 'dict';
       final args = dartType.typeArgumentsOf(coreIterableTypeChecker);
-      if (args!.isNotEmpty) {
+      if (args != null && args.isNotEmpty) {
         final argType1 = dartToPythonSingletype(args[0]);
         final argType2 = dartToPythonSingletype(args[1]);
         pyType = '$container[$argType1, $argType2]';
