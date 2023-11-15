@@ -271,6 +271,8 @@ mixin DecodeHelper implements HelperCore {
       if (args != null && args.isNotEmpty) {
         final argType = dartToPythonSingletype(args[0]);
         pyType = '$container[$argType]';
+      } else {
+        pyType = container;
       }
     } else if (dartType.isDartCoreMap) {
       final container = 'dict';
@@ -279,6 +281,8 @@ mixin DecodeHelper implements HelperCore {
         final argType1 = dartToPythonSingletype(args[0]);
         final argType2 = dartToPythonSingletype(args[1]);
         pyType = '$container[$argType1, $argType2]';
+      } else {
+        pyType = container;
       }
     } else {
       pyType = dartToPythonSingletype(dartType);
