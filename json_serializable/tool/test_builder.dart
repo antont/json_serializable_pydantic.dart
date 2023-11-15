@@ -60,7 +60,7 @@ class _TestBuilder implements Builder {
 
       final lines = <String>[
         r'''
-// GENERATED CODE - DO NOT MODIFY BY HAND
+"""GENERATED CODE - hacky with antont/json_serializable_pydantic.dart"""
 
 ''',
         ...factories.entries.map((e) => "import '${e.key}' as ${e.value};"),
