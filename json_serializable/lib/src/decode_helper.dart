@@ -272,7 +272,7 @@ mixin DecodeHelper implements HelperCore {
     } else if (dartType.toString() == 'DateTime') {
       return 'datetime';
     } else {
-      return 'Any';
+      return dartType.toString(); //'Any';
     }
   }
 }
