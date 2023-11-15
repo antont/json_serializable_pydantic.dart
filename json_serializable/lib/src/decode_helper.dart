@@ -11,6 +11,7 @@ import 'package:source_helper/source_helper.dart';
 
 import 'helper_core.dart';
 import 'json_literal_generator.dart';
+import 'shared_checkers.dart';
 import 'type_helpers/generic_factory_helper.dart';
 import 'unsupported_type_error.dart';
 import 'utils.dart';
@@ -264,22 +265,23 @@ mixin DecodeHelper implements HelperCore {
       typeString = typeString.substring(0, typeString.length-1);
     }
     late String pyType;
-    if (dartType.isDartCoreString) {
-      pyType = 'str';
-    } else if (dartType.isDartCoreInt) {
-      pyType = 'int';
-    } else if (dartType.isDartCoreDouble) {
-      pyType = 'float';
-    } else if (dartType.isDartCoreBool) {
-      pyType = 'bool';
-    } else if (dartType.isDartCoreList) {
-      pyType = 'list';
+    if (dartType.isDartCoreList) {
+      final container = 'list';
+      final args = dartType.typeArgumentsOf(coreIterableTypeChecker);
+      if (args!.isNotEmpty) {
+        final argType = dartToPythonSingletype(args[0]);
+        pyType = '$container[$argType]';
+      }
     } else if (dartType.isDartCoreMap) {
-      pyType = 'dict';
-    } else if (typeString == 'DateTime') {
-      pyType = 'datetime';
+      final container = 'dict';
+      final args = dartType.typeArgumentsOf(coreIterableTypeChecker);
+      if (args!.isNotEmpty) {
+        final argType1 = dartToPythonSingletype(args[0]);
+        final argType2 = dartToPythonSingletype(args[1]);
+        pyType = '$container[$argType1, $argType2]';
+      }
     } else {
-      pyType = typeString; //'Any';
+      pyType = dartToPythonSingletype(dartType);
     }
     /* TODO:
     item: Item?
@@ -287,13 +289,35 @@ mixin DecodeHelper implements HelperCore {
     author: Optional[User?]
     data: Optional[T?]
     lastOrder: Optional[DateTime?]
+    size: num
     */
     if (optional) {
       pyType = 'Optional[$pyType]';
     }
     return pyType;
   }
+
+  String dartToPythonSingletype(DartType dartType) {
+    if (dartType.isDartCoreString) {
+      return 'str';
+    } else if (dartType.isDartCoreInt) {
+      return 'int';
+    } else if (dartType.isDartCoreDouble) {
+      return 'float';
+    } else if (dartType.isDartCoreBool) {
+      return 'bool';
+    } else if (dartType.toString() == 'DateTime') {
+      return 'datetime';
+    } else {
+      var typeString = dartType.toString(); //'Any';
+      if (typeString.endsWith('?')) {
+        typeString = typeString.substring(0, typeString.length-1);
+      }
+      return typeString;
+    }
+  }
 }
+
 
 /// [availableConstructorParameters] is checked to see if it is available. If
 /// [availableConstructorParameters] does not contain the parameter name,

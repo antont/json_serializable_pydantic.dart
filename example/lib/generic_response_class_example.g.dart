@@ -15,7 +15,7 @@ class Article(BaseModel):
     id: int
     title: str
     author: Optional[User]
-    comments: Optional[list]
+    comments: Optional[list[Comment]]
 
 class User(BaseModel):  
     id: Optional[int]

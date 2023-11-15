@@ -13,7 +13,7 @@ class GenericCollection(<T>):
     page: Optional[int]
     totalResults: Optional[int]
     totalPages: Optional[int]
-    results: Optional[list]
+    results: Optional[list[T]]
 
 class CustomResult(BaseModel):  
     name: str
